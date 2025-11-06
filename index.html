@@ -1,23 +1,66 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- 预加载本地字体文件，减少字体闪烁 -->
-    <!-- 注意：这里的路径在开发环境中会被浏览器提示未使用，这是正常的 -->
-    <!-- 因为在构建后，Vite会自动处理这些资源引用并添加哈希值 -->
-    <!-- 如果要在开发环境解决这个警告，可以暂时注释掉这些预加载标签 -->
-    <!-- <link rel="preload" href="./assets/Gilroy-HeavyItalic-8.otf" as="font" type="font/otf" crossorigin>
-    <link rel="preload" href="./assets/Radomir-Tinkov-Gilroy-Heavy-9.otf" as="font" type="font/otf" crossorigin>
-    <link rel="preload" href="./assets/SourceHanSerifCN-Heavy-4.otf" as="font" type="font/otf" crossorigin> -->
-    
-    <title>cover-generator</title>
-    <script type="module" crossorigin src="./assets/index-D4bGvmLq.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/style-BCfiG1SQ.css">
-  </head>
-  <body>
-    <div id="app"></div>
-  </body>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自动跳转页面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        a {
+            color: #0066cc;
+            text-decoration: none;
+            font-size: 18px;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #e6f2ff;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+        a:hover {
+            text-decoration: underline;
+            background-color: #cce0ff;
+        }
+        .countdown {
+            color: #666;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="https://rahoo.online/" target="_blank">前往 rahoo.online</a>
+        <h1>本地址已停止维护，更新地址为：https://rahoo.online/</h1>
+        <p><span id="countdown">8</span> 秒后自动跳转到新地址。</p>
+    </div>
+
+    <script>
+        // 5秒自动跳转功能
+        let seconds = 8;
+        const countdownElement = document.getElementById('countdown');
+        
+        const timer = setInterval(() => {
+            seconds--;
+            countdownElement.textContent = seconds;
+            
+            if (seconds <= 0) {
+                clearInterval(timer);
+                window.location.href = 'https://rahoo.online/';
+            }
+        }, 1000);
+    </script>
+</body>
 </html>
